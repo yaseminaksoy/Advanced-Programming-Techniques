@@ -30,7 +30,10 @@
   <input id="inputInches" type="number" placeholder="Inches" oninput="LengthConverterinch(this.value)">
 </p>
 <hr />
+<b>Sample code of Length Converter</b>
+<pre id=sample>This text is not shown. Why?</pre>
 
+<hr />
 <hr />
 <p>Ref: <a href="https://www.w3schools.com/js/" 
    target="NewTab">JS Tutorial</a>
@@ -60,7 +63,7 @@ function LengthConvertercm(valNum) {
     return new Lenght(Number((value / 0.39370)).toFixed(1));
   }
 }
-
+sample.innerText = LengthConvertercm.toString()+'\n' + LengthConverterinch.toString() +'\n' +  Lenght.toString();
 </script>
 
 </body>
