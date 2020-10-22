@@ -29,7 +29,7 @@
 
 <h3>Journals that include WORK or WEEKEND </h3>
 <textarea id="data" name="w3review" rows="10" cols="70"></textarea>
-<button onclick="GetJournals()">Show Journals</button>
+<button onclick="Part1()">Part 1</button>
 
 <p id="allEntry"></p>
 <script>
@@ -76,7 +76,7 @@ function init() {
     }
 
     
-    function GetJournals()
+    function Part1()
 {
     for (let journal of JOURNAL){
       for (let event of journal.events){
