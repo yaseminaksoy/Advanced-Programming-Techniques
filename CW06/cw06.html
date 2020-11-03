@@ -40,7 +40,7 @@
 "use strict";
 // JavaScript comment
 function check() {
-    fetch(url.value).then(r=>resp.innerText="OK").catch(e=>resp.innerText=e)
+    fetch(url.value).then(r=>resp.innerText="OK").catch(e=>resp.innerText="Failed to fetch!")
 }
 function init() {
     plat.innerText=navigator.platform
