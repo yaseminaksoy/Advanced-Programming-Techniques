@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" href="../images/icon192.png">
+  <title>GitHub Users</title>
+  <style>
+    body {
+        max-width: 440px;
+    }
+    img {
+        padding-right: 12px; 
+        width: 300px;
+        border: 2px solid rgb(226, 221, 221);
+    }
+  </style>
+</head>
+
+<body>
+
+<h2 id=title></h2>
+<input type=text id=usr value=yaseminaksoy onChange="readUser()">
+<p id=out></p>
+<hr />
+
+
+<script>
+"use strict";
+function error(t) {
+    out.style.color = 'red'
+    out.innerText = t; throw t
+}
+async function toJSON(url) {
+    let r = await fetch(url)
+    if (!r.ok) error(r.statusText)
+    return r.json()
+}
+async function readUser() {
+    const BR = "<BR>", 
+      URL = "https://api.github.com/users/"
+    let u = await toJSON(URL+usr.value)
+    if (!u || !u.login) 
+      error(usr.value+' not found')
+    //u.login is the same as usr.value
+    out.style.color = ''
+    out.innerHTML = ''
+    //start with a tiny image
+    let i = document.createElement("img")
+    i.src = u.avatar_url
+    i.align = "center"
+    out.appendChild(i)
+    let k = document.createElement("br")
+    out.appendChild(k)
+    //add name 
+    let s = (u.name? u.name : u.login).bold()
+    out.innerHTML += s; console.log(s)
+    out.appendChild(k)
+    //add user name
+    let userName=u.login
+    out.innerHTML+=userName
+    out.appendChild(k)
+    //add company
+    //out.appendChild(k)
+    out.appendChild(document.createElement("br"))
+    let company=u.company
+    out.innerHTML+=company
+    out.appendChild(k)
+    //add location
+    let loc=""
+    if (u.location) loc +=u.location
+    out.innerHTML+=loc
+    out.appendChild(k)
+    //add blog
+    let blog = u.blog
+    let a = document.createElement("a")
+    a.href=blog
+    a.target="NewTab"
+    a.innerText=blog
+    out.appendChild(a)
+}
+    title.innerText = document.title
+    
+    out.innerText = "Reading data"
+    readUser()
+</script>
+
+</body>
+</html>
