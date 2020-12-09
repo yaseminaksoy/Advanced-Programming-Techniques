@@ -1,7 +1,7 @@
 {
   "name": "yaseminaksoy",
   "short_name": "yaseminaksoy",
-  "start_url": "index.html",
+  "start_url": "homepage.html",
   "display": "standalone",
   "background_color": "orange",
   "theme-color": "orange",
