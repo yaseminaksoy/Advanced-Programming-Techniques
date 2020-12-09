@@ -1,94 +1,190 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <link rel="icon" href="../images/icon192.png">
-    <title>List of Objects </title>
-    <p>
-        Ülke, boy, yaş ve cinsiyet bilgilerinin olduğu tabloda filter, map, sort, pop ve push işlemleri uygulanmıştır.
-    </p>
-  <style>
-    body { max-width: 500px; }
-    #inp { white-space: pre-wrap; }
-    #sample { overflow-x: auto; }
-    #out { color: blue; }
-  </style>
-  <script>
-    navigator.serviceWorker.register('sw.js')
-</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Programming Techniques</title>
+    <link rel="shortcut icon" href="logo.png">
+    <link rel="icon" sizes="192x192" href="logo.png">
+    <style>
+        table {
+          font-family: Arial, Helvetica, sans-serif;
+          border-collapse: collapse;
+          width: 500px;
+        }
+        
+        td, th {
+          border: 1px solid #1c4142;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #a9cdce;
+        }
+        </style>
 </head>
-
 <body>
-
-<h2 id=title></h2>
-<b>Text input &emsp;
-<input type=button id=convert value=Convert onclick="toList()">
-</b>
-<p>
-  <textarea id=inp onchange="convert.disabled=false" rows=10 cols=50 >
-  </textarea>
-</p>
-<b>JSON output</b>
-<pre id=out></pre>
-<hr />
-<b>Sample code</b>
-<pre id=sample></pre>
-<hr />
-<p>Ref: 
-<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters#Examples" 
-   target="NewTab">Rest Parameters</a>
-</p>
-
-<script>
-"use strict";
-function toList(str) {
-  function toObject(x) {
-    let b = {}
-    for (let [i,s] of x.split('\t').entries())
-      b[keys[i]] = (isNaN(s)? s : Number(s))
-    return b
-  }
-    if (str) inp.value = str
-    else str = inp.value
-    convert.disabled = true
-    let [d0, ...data] = str.split('\n')
-    let keys = d0.split('\t')
-    console.log("Keys:", keys)
-    let a = data.map(toObject)
-    out.innerText = JSON.stringify(a, '' ,2)
-    console.table(a)
-    return a
-}
-const PLANET = 
-`Name	Diam	Mass	Radius	Period
-Mercury	0.382	0.06	0.40	0.24
-Venus	0.949	0.82	0.72	0.62
-Earth	1.000	1.00	1.00	1.00
-Mars	0.532	0.11	1.52	1.88
-Jupiter	11.209	317.80	5.20	11.86
-Saturn	9.449	95.20	9.54	29.46
-Uranus	4.007	14.60	19.22	84.01
-Neptune	3.883	17.20	30.06	164.80`,
-
-VERILER = `ulke	boy	kilo	yas	cinsiyet
-tr	130	30	10	e
-tr	126	36	11	e
-tr	134	34	10	k
-us	185	105	33	e
-us	155	50	44	k
-us	160	58	39	k
-fr	190	85	25	e
-fr	177	60	22	k
-fr	170	55	21	k
-`
-
-    title.innerText = document.title
-    sample.innerText = toList
-    inp.value = VERILER
-    
-    //toList()  //array of objects
-</script>
-
+    <h1>Advanced Programming Techniques</h3>
+    <h3><a href="https://github.com/yaseminaksoy/Advanced-Programming-Techniques">Repository</a></h3>
+    <h2>Classworks</h2>
+    <div>
+        <table>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+            </tr>
+            <tr>
+                <td>
+                    12
+                </td>
+                <td><a href="https://yaseminaksoy.github.io/Advanced-Programming-Techniques/CW12/api.html">GitHub User Api</a></td>
+            </tr>
+            <tr>
+                <td>
+                    11
+                </td>
+                <td><a href="https://yaseminaksoy.github.io/Advanced-Programming-Techniques/CW11/event.html">Event Listeners</a></td>
+            </tr>
+            <tr>
+                <td>
+                    10
+                </td>
+                <td><a href="https://yaseminaksoy.github.io/Advanced-Programming-Techniques/CW10/crypto.html">ArrayBuffer and Crypto</a></td>
+            </tr>
+            <tr>
+                <td>
+                    09
+                </td>
+                <td><a href="https://yaseminaksoy.github.io/Advanced-Programming-Techniques/CW09/page.html">Page made by JS</a></td>
+            </tr>
+            <tr>
+                <td>
+                    08
+                </td>
+                <td><a href="https://yaseminaksoy.github.io/Advanced-Programming-Techniques/CW08/cw08files.html">File Operations</a></td>
+            </tr>
+            <tr>
+                <td>
+                    07
+                </td>
+                <td><a href="https://yaseminaksoy.github.io/Advanced-Programming-Techniques/CW07/database.html">Student Database</a></td>
+            </tr>
+            <tr>
+                <td>
+                    06
+                </td>
+                <td>
+                    <a href="https://yaseminaksoy.github.io/Advanced-Programming-Techniques/CW06/cw06.html">Callback and Promise</a>
+                </td>
+            </tr>
+            <tr>
+                <td>05</td>
+                <td>
+                    Classes and Maps
+                    <a href="https://yaseminaksoy.github.io/Advanced-Programming-Techniques/CW05/CW05.html">Part1</a>
+                    <a href="https://yaseminaksoy.github.io/Advanced-Programming-Techniques/CW05/converter.html">Part2</a>
+                </td>
+            </tr>
+            <tr>
+                <td>04</td>
+                <td>
+                    <a href="https://yaseminaksoy.github.io/Advanced-Programming-Techniques/CW4/index.html">Text to Objects</a>
+                </td>
+            </tr>
+            <tr>
+                <td>03</td>
+                <td>
+                    <a href="https://yaseminaksoy.github.io/Advanced-Programming-Techniques/CW3/chap4.html">Objects and Arrays</a>
+                </td>
+            </tr>
+            <tr>
+                <td>02</td>
+                <td>
+                    Making a Web Page
+                    <a href="https://yaseminaksoy.github.io/Advanced-Programming-Techniques/CW2/Counting.html">Part1</a>
+                    <a href="https://yaseminaksoy.github.io/Advanced-Programming-Techniques/CW2/length.html">Part2</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <h2>Homeworks</h2>
+    <div>
+        <table>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+            </tr>
+            <tr>
+                <td>03</td>
+                <td>
+                    <a href="https://seymakotan.github.io/305/anim/Animation.html">GitHub and Animation</a>
+                </td>
+            </tr>
+            <tr>
+                <td>02</td>
+                <td>
+                    <a href="https://yaseminaksoy.github.io/Advanced-Programming-Techniques/HW02/database.html">Database and Timing</a>
+                </td>
+            </tr>
+            <tr>
+                <td>01</td>
+                <td>
+                    <a href="https://yaseminaksoy.github.io/Advanced-Programming-Techniques/HW01/table.html">Poisson Table</a>
+                </td>
+                
+            </tr>
+        </table>
+    </div>
+    <h2>Projects</h2>
+    <div>
+        <table>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+            </tr>
+            <tr>
+                <td>01</td>
+                <td>
+                    <a href="">Memory Card Game</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <h2>Useful Links</h2>
+    <div>
+        <table>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+            </tr>
+            <tr>
+                <td>04</td>
+                <td>
+                    <a href="https://eloquentjavascript.net/">Eloquent JavaScript</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    03
+                </td>
+                <td>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">Mozilla web docs</a>
+                </td>
+            </tr>
+            <tr>
+                <td>02</td>
+                <td>
+                    <a href="https://javascript.info/">Modern JS Tutorial</a>
+                </td>
+            </tr>
+            <tr>
+                <td>01</td>
+                <td>
+                    <a href="https://andreasbm.github.io/web-skills/">Useful web skills</a>
+                </td>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>
