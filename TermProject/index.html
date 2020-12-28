@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
   <title>Memory Card Game</title>
   <link rel="icon" href="../images/icon192.png">
   <style>
@@ -19,15 +20,15 @@
 <body>
 
   <h3>Score:<span id="result"></span></h3>
-
+  <p id="out"> </p>
   <hr />
   <div class="grid">
   </div>
 
   <script>
     "use strict";
+    out.innerHTML="</br>";
     document.addEventListener('DOMContentLoaded', () => {
-      
       const cardArray = [
         {
           name: 'fries',
@@ -87,7 +88,7 @@
       var cardsChosenId = []
       var cardsWon = []
 
-      
+
       function createBoard() {
         for (let i = 0; i < cardArray.length; i++) {
           var card = document.createElement('img')
@@ -98,8 +99,7 @@
         }
       }
 
-      
-      
+
       function flipCard() {
         var cardId = this.getAttribute('data-id')
         cardsChosen.push(cardArray[cardId].name)
