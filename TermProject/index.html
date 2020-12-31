@@ -7,11 +7,17 @@
   <title>Memory Card Game</title>
   <link rel="icon" href="../images/icon192.png">
   <style>
+    body{
+      background-color: lemonchiffon;
+    }
     div {
       display: flex;
       flex-wrap: wrap;
       width: 400px;
       height: 300px;
+      background-color:cadetblue;
+      position: absolute;
+      top: 22%;
     }
   </style>
 
@@ -19,15 +25,13 @@
 
 <body>
 
-  <h3>Score:<span id="result"></span></h3>
-  <p id="out"> </p>
-  <hr />
+  
   <div class="grid">
   </div>
 
   <script>
     "use strict";
-    out.innerHTML="</br>";
+    //out.innerHTML = "</br>";
     document.addEventListener('DOMContentLoaded', () => {
       const cardArray = [
         {
@@ -87,9 +91,40 @@
       var cardsChosen = []
       var cardsChosenId = []
       var cardsWon = []
-
+      var txt=document.createElement('h2');
+      txt.innerText='Memory Card Game'
+      document.body.appendChild(txt)
+      var startButton = document.createElement('div');
+      startButton.id = 'startButton'
+      
+      startButton.style.position = "absolute";
+      startButton.style.top = "38%"
+      startButton.style.left = "19%"
+      startButton.style.width = "fit-content";
+      startButton.style.fontSize = '30px';
+      startButton.style.height='fit-content';
+      startButton.style.color = "#000";
+      startButton.style.fontWeight="bold";
+      startButton.style.backgroundColor = "cadetblue"
+      startButton.style.cursor = 'pointer'
+      startButton.innerHTML = 'Click here to start';
+      startButton.onclick = function(){startButton.style.display= "none"; createBoard();};
+            
+            grid.appendChild(startButton)
 
       function createBoard() {
+        var score = document.createElement('h3');
+        score.innerText='Score: '
+        document.body.appendChild(score)
+        var sp=document.createElement('span');
+        sp.setAttribute('id','result')
+        score.appendChild(sp)
+        var out = document.createElement('p');
+        out.setAttribute('id','out')
+        out.innerHTML="</br>"
+        document.body.appendChild(out)
+        var hr=document.createElement('hr');
+        document.body.appendChild(hr)
         for (let i = 0; i < cardArray.length; i++) {
           var card = document.createElement('img')
           card.setAttribute('src', 'images/blank.png')
@@ -100,6 +135,37 @@
       }
 
 
+      //check for matches
+      function checkForMatch() {
+        var cards = document.querySelectorAll('img')
+        const optionOneId = cardsChosenId[0]
+        const optionTwoId = cardsChosenId[1]
+
+        if (optionOneId == optionTwoId) {
+          cards[optionOneId].setAttribute('src', 'images/blank.png')
+          cards[optionTwoId].setAttribute('src', 'images/blank.png')
+          out.innerText = 'You have clicked the same image!';
+        }
+        else if (cardsChosen[0] === cardsChosen[1]) {
+          out.innerText = 'You found a match!';
+          cards[optionOneId].setAttribute('src', 'images/white.png')
+          cards[optionTwoId].setAttribute('src', 'images/white.png')
+          cards[optionOneId].removeEventListener('click', flipCard)
+          cards[optionTwoId].removeEventListener('click', flipCard)
+          cardsWon.push(cardsChosen)
+        } else {
+          cards[optionOneId].setAttribute('src', 'images/blank.png')
+          cards[optionTwoId].setAttribute('src', 'images/blank.png')
+          out.innerText = 'Sorry, try again :(';
+        }
+        cardsChosen = []
+        cardsChosenId = []
+        var result=document.getElementById('result')
+        result.innerText = cardsWon.length
+        if (cardsWon.length === cardArray.length / 2) {
+          result.innerText = 'Congratulations! You found them all!'
+        }
+      }
       function flipCard() {
         var cardId = this.getAttribute('data-id')
         cardsChosen.push(cardArray[cardId].name)
@@ -109,8 +175,6 @@
           setTimeout(checkForMatch, 500)
         }
       }
-
-      createBoard()
     })
 
   </script>
